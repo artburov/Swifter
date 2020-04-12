@@ -9,18 +9,24 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
-        super.viewDidLoad()       
+        super.viewDidLoad()
     }
-
+    
     @IBOutlet weak var labelText: UILabel!
     @IBOutlet weak var textField: UITextField!
     
     @IBAction func pressBtn(_ sender: Any) {
-              
-        labelText.text = textField.text! + " " + labelText.text!
+        
+        let textValue: Int = Int(textField.text!)!
+        
+        if textValue % 2 == 0 {
+            let powResult = Int(pow(Double(2),Double(textValue)))
+            
+            labelText.text = String(powResult)
+        }else {
+            labelText.text = "Enter an integer in the text field"
+        }
     }
-    
 }
-
