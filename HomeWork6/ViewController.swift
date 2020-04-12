@@ -10,22 +10,36 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
-    @IBOutlet weak var labelText: UILabel!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var resultLabel: UILabel!
     
-    @IBAction func pressBtn(_ sender: Any) {
+    @IBOutlet weak var firstTextField: UITextField!
+    @IBOutlet weak var secondTextField: UITextField!
+    
+    @IBOutlet weak var operatorTextField: UITextField!
+    
+    
+    @IBAction func calculateBtn(_ sender: Any) {
         
-        let textValue: Int = Int(textField.text!)!        
-        if textValue % 2 == 0 {
-            let powResult = Int(pow(Double(2),Double(textValue)))
-            
-            labelText.text = String(powResult)
-        }else {
-            labelText.text = "Enter an integer in the text field"
+        let firstNumber = firstTextField.text
+        let secondNumber = secondTextField.text
+        let operatorSelected = operatorTextField.text
+        
+        switch operatorSelected {
+        case "+":
+            let operationAdd = Int(Int(firstNumber!)! + Int(secondNumber!)!)
+            resultLabel.text = String(operationAdd)
+        case "-":
+            let operationAdd = Int(Int(firstNumber!)! - Int(secondNumber!)!)
+            resultLabel.text = String(operationAdd)
+        case "*":
+            let operationAdd = Int(Int(firstNumber!)! * Int(secondNumber!)!)
+            resultLabel.text = String(operationAdd)
+        case "/":
+            let operationAdd = Int(Int(firstNumber!)! / Int(secondNumber!)!)
+            resultLabel.text = String(operationAdd)
+        default:
+            resultLabel.text = "Incorrect input"
         }
-    }
+    }    
 }
