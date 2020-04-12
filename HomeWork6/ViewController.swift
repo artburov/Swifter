@@ -11,12 +11,16 @@ import UIKit
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        /*
-         init1
-         */
+        super.viewDidLoad()       
     }
 
-
+    @IBOutlet weak var labelText: UILabel!
+    @IBOutlet weak var textField: UITextField!
+    
+    @IBAction func pressBtn(_ sender: Any) {
+              
+        labelText.text = textField.text! + " " + labelText.text!
+    }
+    
 }
 
