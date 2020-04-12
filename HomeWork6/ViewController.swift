@@ -20,26 +20,36 @@ class ViewController: UIViewController {
     
     
     @IBAction func calculateBtn(_ sender: Any) {
-        
-        let firstNumber = firstTextField.text
-        let secondNumber = secondTextField.text
-        let operatorSelected = operatorTextField.text
-        
-        switch operatorSelected {
-        case "+":
-            let operationAdd = Int(Int(firstNumber!)! + Int(secondNumber!)!)
-            resultLabel.text = String(operationAdd)
-        case "-":
-            let operationAdd = Int(Int(firstNumber!)! - Int(secondNumber!)!)
-            resultLabel.text = String(operationAdd)
-        case "*":
-            let operationAdd = Int(Int(firstNumber!)! * Int(secondNumber!)!)
-            resultLabel.text = String(operationAdd)
-        case "/":
-            let operationAdd = Int(Int(firstNumber!)! / Int(secondNumber!)!)
-            resultLabel.text = String(operationAdd)
-        default:
-            resultLabel.text = "Incorrect input"
+        if firstTextField.text!.isNumeric && secondTextField.text!.isNumeric {
+            
+            let firstNumber = firstTextField.text
+            let secondNumber = secondTextField.text
+            let operatorSelected = operatorTextField.text
+            
+            switch operatorSelected {
+            case "+":
+                let operationAdd = Int(Int(firstNumber!)! + Int(secondNumber!)!)
+                resultLabel.text = String(operationAdd)
+            case "-":
+                let operationAdd = Int(Int(firstNumber!)! - Int(secondNumber!)!)
+                resultLabel.text = String(operationAdd)
+            case "*":
+                let operationAdd = Int(Int(firstNumber!)! * Int(secondNumber!)!)
+                resultLabel.text = String(operationAdd)
+            case "/":
+                let operationAdd = Int(Int(firstNumber!)! / Int(secondNumber!)!)
+                resultLabel.text = String(operationAdd)
+            default:
+                resultLabel.text = "Incorrect input"
+            }
+        } else {
+            resultLabel.text = "Only integer allowed"
         }
-    }    
+    }
+}
+
+extension String {
+    var isNumeric : Bool {
+      return NumberFormatter().number(from: self) != nil
+    }
 }
