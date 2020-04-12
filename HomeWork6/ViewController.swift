@@ -19,8 +19,7 @@ class ViewController: UIViewController {
     
     @IBAction func pressBtn(_ sender: Any) {
         
-        let textValue: Int = Int(textField.text!)!
-        
+        let textValue: Int = Int(textField.text!)!        
         if textValue % 2 == 0 {
             let powResult = Int(pow(Double(2),Double(textValue)))
             
