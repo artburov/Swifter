@@ -1,0 +1,29 @@
+import UIKit
+
+class ViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    @IBOutlet weak var labelText: UILabel!
+    @IBOutlet weak var textField: UITextField!
+    
+    @IBAction func pressBtn(_ sender: Any) {
+        if (textField.text!.isNumeric) {
+            let textValue: Int = Int(textField.text!)!
+            
+            let powResult = Int(pow(Double(2),Double(textValue)))
+            
+            labelText.text = String(powResult)
+        } else {
+            labelText.text = "Only integer allowed"
+        }
+    }
+}
+
+extension String {
+    var isNumeric : Bool {
+        return NumberFormatter().number(from: self) != nil
+    }
+}
